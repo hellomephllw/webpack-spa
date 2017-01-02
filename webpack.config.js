@@ -2,7 +2,8 @@ const rootPath = __dirname;
 
 const
     webpack = require('webpack'),
-    UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+    UglifyJsPlugin = webpack.optimize.UglifyJsPlugin,
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //webpack配置
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
     //输出文件路径配置
     output: {
         path: `${rootPath}/assets/`,
-        filename: '[name].bundle.js'
+        filename: '[name].[hash:5].js'
     },
     //模块加载器配置
     module: {
@@ -40,7 +41,15 @@ module.exports = {
         new UglifyJsPlugin({
             compress: {
                 warnings: false
-            }
+            },
+            except: ['$super', '$', 'exports', 'require']
+        }),
+        //编译html
+        new HtmlWebpackPlugin({
+            template: `${rootPath}/src/views/entry.html`,//指定视图
+            chunks: ['main']//指定entry中的编译后的文件
         })
-    ]
+    ],
+    //source map配置
+    devtool : "#cheap-module-eval-source-map"
 };
