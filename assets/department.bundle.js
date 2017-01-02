@@ -47,13 +47,9 @@
 	'use strict';
 
 	/**
-	 * Created by liliwen on 2016/12/30.
+	 * Created by liliwen on 2017/1/2.
 	 */
 	__webpack_require__(2);
-
-	var words = 'hello world!!!';
-
-	console.log(words);
 
 /***/ },
 /* 1 */,

@@ -49,7 +49,7 @@
 	/**
 	 * Created by liliwen on 2016/12/30.
 	 */
-	__webpack_require__(2);
+	__webpack_require__(3);
 
 	var words = 'hello world!!!';
 
@@ -57,7 +57,8 @@
 
 /***/ },
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
