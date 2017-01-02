@@ -2,17 +2,13 @@ const rootPath = __dirname;
 
 const
     webpack = require('webpack'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+    UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 //webpack配置
 module.exports = {
     //入口文件路径配置
     entry: {
-        common: `${rootPath}/src/scripts/common/common.js`,
-        vendor: `${rootPath}/src/scripts/common/vendor.js`,
-        employee: `${rootPath}/src/scripts/employee/index.js`,
-        department: `${rootPath}/src/scripts/department/index.js`
+        main: `${rootPath}/src/scripts/main.js`
     },
     //输出文件路径配置
     output: {
@@ -31,11 +27,6 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             },
-            //css加载器
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-            },
             //sass加载器
             {
                 test: /\.scss$/,
@@ -45,10 +36,11 @@ module.exports = {
     },
     //插件配置
     plugins: [
-        //踢出一个或多个公共js
-        new CommonsChunkPlugin('common.js', ['common']),
-        new CommonsChunkPlugin('vendor.js', ['vendor']),
-        //踢出公共css
-        new ExtractTextPlugin('common.css', {allChunks: true})
+        //压缩js
+        new UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ]
 };
