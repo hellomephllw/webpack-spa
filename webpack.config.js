@@ -14,7 +14,8 @@ module.exports = {
     //输出文件路径配置
     output: {
         path: `${rootPath}/assets/`,
-        filename: '[name].[hash:5].js'
+        publicPath: "/assets/",
+        filename: '[name].js'
     },
     //模块加载器配置
     module: {
@@ -47,9 +48,8 @@ module.exports = {
         //编译html
         new HtmlWebpackPlugin({
             template: `${rootPath}/src/views/entry.html`,//指定视图
-            chunks: ['main']//指定entry中的编译后的文件
+            hash: true,
+            chunks: ['main']//为视图指定js和css，名字在entry中选一个或多个
         })
-    ],
-    //source map配置
-    devtool : "#cheap-module-eval-source-map"
+    ]
 };

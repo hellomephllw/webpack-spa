@@ -7,3 +7,4 @@ require('../css/main.scss');
 let words = 'hello world!!!';
 
 console.log(words);
+console.log(3);
