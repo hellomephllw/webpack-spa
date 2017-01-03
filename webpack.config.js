@@ -20,7 +20,7 @@ module.exports = {
     //模块加载器配置
     module: {
         loaders: [
-            //babel加载器
+            //script加载器
             {
                 test: /\.js[x]?$/,
                 exclude: /node_modules/,
@@ -28,6 +28,21 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
+            },
+            //image加载器
+            {
+                test: /\.(png|jp[e]?g|gif)$/,
+                loader: 'url-loader?limit=10240&name=images/[name].[hash:5].[ext]'
+            },
+            //font加载器
+            {
+                test: /\.(woff|svg|eot|ttf)$/,
+                loader: 'url-loader?limit=10240&name=fonts/[name].[hash:5].[ext]'
+            },
+            //css加载器
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             },
             //sass加载器
             {

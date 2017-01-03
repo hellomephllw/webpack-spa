@@ -5,3 +5,17 @@ body {
     font-size: $fontSize;
     color: $fontColorDefault;
 }
+
+.small {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    background: url("../images/small.png") no-repeat;
+}
+
+.temp {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    background: url("../images/temp.png") no-repeat;
+}
